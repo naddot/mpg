@@ -21,9 +21,6 @@ def calculate_fuel_costs_by_grade(fuel_consumption_mpg, annual_mileage, fuel_pri
     # Convert MPG to L/100km
     base_fuel_consumption_l_per_100km = mpg_to_l_per_100km / fuel_consumption_mpg
     
-    #convert pence to pounds
-    fuel_price = fuel_price/100
-    
     # Tyre grades and corresponding RRC values
     tyre_grades = {
         "A": 6.5,
@@ -79,7 +76,7 @@ col1,col_spacer, col2 = st.columns([1, 0.5, 1])
 with col1:
     fuel_consumption_mpg = st.number_input("Enter your vehicle's MPG (UK):", min_value=1.0, value=40.0)
     annual_mileage = st.number_input("Enter your average annual mileage (miles):", min_value=1.0, value=12000.0)
-    fuel_price = st.number_input("Enter the current fuel price, pence per litre (p/l):", min_value=0.01, value=140)
+    fuel_price = st.number_input("Enter the current fuel price, pence per litre (p/l):", min_value=1, value=140) / 100
 
     if st.button("Calculate Fuel Costs"):
         cost_differences, percentage_increase = calculate_fuel_costs_by_grade(fuel_consumption_mpg, annual_mileage, fuel_price)
