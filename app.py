@@ -74,12 +74,12 @@ st.set_page_config(layout="wide")
 
 st.title("Tyre Rolling Resistance Fuel Cost Calculator")
 
-col1,col_spacer, col2 = st.columns([1, 0.5, 1.5])
+col1,col_spacer, col2 = st.columns([1, 0.5, 1])
 
 with col1:
     fuel_consumption_mpg = st.number_input("Enter your vehicle's MPG (UK):", min_value=1.0, value=40.0)
     annual_mileage = st.number_input("Enter your average annual mileage (miles):", min_value=1.0, value=12000.0)
-    fuel_price = st.number_input("Enter the current fuel price per litre (£):", min_value=0.1, value=1.60)
+    fuel_price = st.number_input("Enter the current fuel price, pence per litre (p/l):", min_value=0.01, value=140)
 
     if st.button("Calculate Fuel Costs"):
         cost_differences, percentage_increase = calculate_fuel_costs_by_grade(fuel_consumption_mpg, annual_mileage, fuel_price)
@@ -95,6 +95,8 @@ with col2:
     st.markdown("## About Rolling Resistance")
     st.write(
         f"Lowering the rolling resistance of passenger car tires leads to measurable fuel savings."
+        " "
         f"Industry experiments (Michelin and TNO projects) all quantify the benefit at roughly 1% fuel saved per 5–10% reduction in RRC, or about 2% fuel economy improvement for a 0.001 decrease in RRC for the average car. "
-        f"Simply by choosing tires and road designs that minimise rolling resistance you can save fuel and make meaningful CO₂ reductions over time"
+        " "
+        f"Simply by choosing tires and road designs that minimise rolling resistance you can save fuel and make meaningful CO₂ reductions over time."
     )
