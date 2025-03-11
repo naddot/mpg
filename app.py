@@ -74,7 +74,7 @@ st.set_page_config(layout="wide")
 
 st.title("Tyre Rolling Resistance Fuel Cost Calculator")
 
-col1, col2 = st.columns([1, 1.5])
+col1,col_spacer, col2 = st.columns([1, 0.5, 1.5])
 
 with col1:
     fuel_consumption_mpg = st.number_input("Enter your vehicle's MPG (UK):", min_value=1.0, value=40.0)
@@ -88,6 +88,9 @@ with col1:
         for grade in cost_differences:
             st.write(f"**{grade}-rated:** £{cost_differences[grade]:.2f} (+{percentage_increase[grade]:.2f}%)")
 
+with col_spacer:
+    st.write("")
+    
 with col2:
     st.markdown("## About Rolling Resistance")
     st.write(
